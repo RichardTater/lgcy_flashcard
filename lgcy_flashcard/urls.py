@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('flashcard/', include('flashcard.urls')),
+    path('flashcards/', include('flashcard.urls')),
 ]
