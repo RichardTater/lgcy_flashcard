@@ -1,17 +1,18 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, HttpResponseRedirect
+from django.views.generic import ListView, DetailView
+
+from .models import Flashcard
 
 # Create your views here.
 # Request -> Response
 # Request handler
 # Action
 
-def say_hello(request):
-    return render(request, 'hello.html', {
-        'name': 'Lane',
-        'gender': 'non-binary'
-        })
+class FlashcardListView(ListView):
+    model = Flashcard
+    template_name = "flashcard.html"
+    context_object_name = "flashcard_list"
 
-def render_flashcards(request:HttpRequest):
-    request.body
-    return HttpResponse("Render questions here:")
+class FlashcardDetailsView(DetailView):
+    model = Flashcard
+    template_name = "flashcard_details.html"
