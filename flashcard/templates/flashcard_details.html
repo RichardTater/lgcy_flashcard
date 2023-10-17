@@ -1,11 +1,26 @@
 {% extends "base.html" %}
 {% block header %}
-    <h1>
-        {{ flashcard.question_text}}
-    </h1>
+
+    <h1> {{ flashcard.question_text }} </h1>
+
 {% endblock header %}
 {% block content %}
     
     <h3> {{ flashcard.answer_text }} </h3>
+
+    {% if previous_flashcard %}
+        <a href="{% url 'flashcard:answers' previous_flashcard.id %}">
+            <button>Previous</button>
+        </a>
+    {% endif %}
+
+    <a href="{% url 'flashcard:index' %}">
+        <button>All Flashcards</button>
+    </a>
     
+    {% if next_flashcard %}
+        <a href="{% url 'flashcard:answers' next_flashcard.id %}">
+            <button>Next</button>
+        </a>
+    {% endif %}
 {% endblock content %}

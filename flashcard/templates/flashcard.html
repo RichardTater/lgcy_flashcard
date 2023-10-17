@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block header %}
-    <h1>
-        All Flashcards
-    </h1>
+
+    <h1> All Flashcards </h1>
+
 {% endblock header %}
 {% block content %}
+
     {% for flashcard in flashcard_list %}
+
         <h3><a href="{% url 'flashcard:answers' flashcard.id %}"> {{ flashcard.question_text }} </a></h3>
+
     {% endfor %}
+
 {% endblock content %}
